@@ -5,18 +5,19 @@
          version="3.1">
     
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
     <!--配置和映射Servlet-->
     <!--配置Servlet-->
     <servlet>
-        <servlet-name>SearchBarUIServlet</servlet-name>
-        <servlet-class>com.lq.servlet.SearchBarUIServlet</servlet-class>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.lq.servlet.SearchServlet</servlet-class>
     </servlet>
+
     <!--映射Servlet -->
     <servlet-mapping>
-        <servlet-name>SearchBarUIServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
 </web-app>
