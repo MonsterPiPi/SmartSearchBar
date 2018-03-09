@@ -22,9 +22,13 @@
           <element id="library" level="project" name="Gradle: com.github.pagehelper:pagehelper:5.1.2" />
           <element id="library" level="project" name="Gradle: org.slf4j:slf4j-simple:1.7.25" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.18" />
+          <element id="library" level="project" name="Gradle: com.alibaba:fastjson:1.2.46" />
           <element id="library" level="project" name="Gradle: com.github.jsqlparser:jsqlparser:1.0" />
           <element id="library" level="project" name="Gradle: org.slf4j:slf4j-api:1.7.25" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.alibaba/fastjson/1.2.46/1510c47faaf3d484221ab20e4ec9d42cfa4984cb/fastjson-1.2.46.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.2.30/f916048adc012c9342b796a5f84c0ac6205abcac/kotlin-stdlib-jdk8-1.2.30.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.2.30/ca12c47fc1e3a7316067b2a51e2f214745ebf8c5/kotlin-stdlib-jdk7-1.2.30.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.30/2dfac33f8b4e92c9dd1422cd286834701a6f6d6/kotlin-stdlib-1.2.30.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
         </element>
       </element>
     </root>

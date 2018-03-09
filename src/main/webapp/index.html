@@ -371,7 +371,7 @@
 function mySearchText() {
     var message= document.getElementById("message").value;
     $.ajax({
-        url:"/SmartSearchBar/search", //请求验证页面
+        url:"/SmartSearchBar/s", //请求验证页面
         type:"POST", //请求方式 可换为post 注意验证页面接收方式
         data:{message:message},//取得表文本框数据，作为提交数据 注意前面的 user 此处格式 key=value 其他方式请参考ajax手册
         dataType:"json",
