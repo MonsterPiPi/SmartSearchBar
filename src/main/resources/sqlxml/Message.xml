@@ -28,7 +28,7 @@
   </resultMap>
 
   <select id="queryMessageList" parameterType="com.lq.bean.Message" resultMap="MessageResult">
-    select <include refid="columns"/> from MESSAGE
+    select DISTINCT <include refid="columns"/> from MESSAGE
     <where>
     <if test="command!=null &amp;&amp; !&quot;&quot;.equals(command.trim())">
       and COMMAND like '%' #{command} '%'
@@ -38,7 +38,7 @@
   </select>
 
 
-  <sql id="columns">ID,COMMAND</sql>
+  <sql id="columns">COMMAND</sql>
 
 
 </mapper>

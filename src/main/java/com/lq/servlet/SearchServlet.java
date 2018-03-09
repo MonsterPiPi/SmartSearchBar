@@ -38,18 +38,21 @@ public class SearchServlet extends HttpServlet {
             logger.info(msg);
             QueryService queryService=new QueryService();
             List<Message> messageList=queryService.queryMessageList(msg);
+            logger.info(messageList.size()+"");
             PrintWriter out = null;
-            try {
-                out = resp.getWriter();
-                Object object= JSON.toJSON(ResultUtil.success(messageList));
-                out.print(object);
-                out.flush();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }finally{
-                out.close();
-            }
+                try {
+                    out = resp.getWriter();
+                    Object object= JSON.toJSON(ResultUtil.success(messageList));
+                    out.print(object);
+                    out.flush();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }finally{
+                    out.close();
+                }
+
+
         }
 
     }

@@ -7,13 +7,10 @@ import java.util.List;
 
 
 /**
- * Created by IntelliJ IDEA.
- * User : 51103942@qq.com
- * Date : 2018/1/19
- * Time : 14:46
- * Talk is cheap. Show me the code.
+ * Created by LiQian_Nice on 2018/3/9
+ *
+ * 查询相关的业务功能
  */
-//查询相关的业务功能
 public class QueryService {
 
     public List<Message> queryMessageList(String command) {

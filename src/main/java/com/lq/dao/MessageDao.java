@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by LiQian_Nice on 2018/3/8
@@ -47,16 +46,8 @@ public class MessageDao {
     }
 
 
-    public static void main(String[] args){
-        MessageDao messageDao=new MessageDao();
-        //messageDao.queryMessageListByPage("","");
-    }
 
 
-    //数据库用户名
-    String userName="root";
-    //数据库访问密码
-    String userPasswd="123456";
 
 
 }

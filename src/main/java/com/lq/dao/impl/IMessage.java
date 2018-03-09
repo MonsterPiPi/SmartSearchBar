@@ -15,6 +15,6 @@ public interface IMessage {
     /**
      * 根据查询条件查询消息列表
      */
-    public List<Message> queryMessageList(Message message);
+    List<Message> queryMessageList(Message message);
 
 }

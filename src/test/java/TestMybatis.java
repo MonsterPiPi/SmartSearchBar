@@ -15,7 +15,7 @@ public class TestMybatis {
         QueryService queryService=new QueryService();
         List<Message> messageList=queryService.queryMessageList(command);
         for (Message message:messageList){
-            System.out.println(message.getId());
+            System.out.println(message.getCommand());
         }
     }
 }

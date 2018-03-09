@@ -1,28 +1,28 @@
 package com.lq.bean
 
+
 /**
  * Created by LiQian_Nice on 2018/3/9
  *
- * 搜索信息表
+ * 历史搜索记录表
  */
-class Message{
+class HistoryRecord{
 
-    //类似java的成员变量
-    var id : String=""
-    var command: String=""
+    var id:String=""
+    var command:String=""
+    var createTime:String=""
 
     //类似java的构造方法
-    constructor(id:String,command:String){
+    constructor(id:String,command:String,createTime:String){
         this.id=id
         this.command=command
+        this.createTime=createTime
     }
 
     //类似java的构造方法
     constructor(){
         id=""
         command=""
+        createTime=""
     }
-
-
-
 }
