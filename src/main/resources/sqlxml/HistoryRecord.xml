@@ -25,10 +25,16 @@
     <resultMap type="com.lq.bean.HistoryRecord" id="HistoryRecordResult">
         <id column="ID" jdbcType="INTEGER" property="id"/>
         <result column="COMMAND" jdbcType="VARCHAR" property="command"/>
-        <result column="CREATETIME" jdbcType="VARCHAR" property="createTime"/>
+        <result column="CREATETIME" jdbcType="VARCHAR" property="createtime"/>
     </resultMap>
 
+    <insert id="addRecord" parameterType="com.lq.bean.HistoryRecord">
+        INSERT INTO historyRecord (COMMAND,CREATETIME) VALUES (#{command},#{createtime})
+    </insert>
 
+    <select id="queryHistoryRecordList"  resultMap="HistoryRecordResult">
+        SELECT * FROM historyRecord
+    </select>
 
 
     <sql id="columns">COMMAND,CREATETIME</sql>

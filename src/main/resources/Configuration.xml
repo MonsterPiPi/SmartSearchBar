@@ -53,6 +53,7 @@
 
   <mappers>
     <mapper resource="sqlxml/Message.xml"/>
+    <mapper resource="sqlxml/HistoryRecord.xml"/>
   </mappers>
 
 </configuration>

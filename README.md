@@ -1,14 +1,14 @@
 ## SmartSearchBar
 
 #### 简介
-##### 使用Mybatis,Sevlet,Ajax开发一款仿百度的智能提示搜索框,添加Kotlin支持。
+##### 使用Mybatis,Sevlet,Ajax开发一款仿百度的智能提示搜索框,使用Koltin代替java。
 
 #### 环境配置
- - Java: 1.8
  - Gradle: 4.4.1
  - Tomcat: 9.0.0
  - Kotlin: 1.2.30
-#### 开发工具: IntellJ IDEA
+#### 开发工具
+- IntellJ IDEA
 
 #### Gradle配置内容
 

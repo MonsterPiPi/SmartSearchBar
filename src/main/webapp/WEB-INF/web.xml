@@ -20,4 +20,13 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/s</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RecordServlet</servlet-name>
+        <servlet-class>com.lq.servlet.RecordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecordServlet</servlet-name>
+        <url-pattern>/v</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -10,19 +10,19 @@ class HistoryRecord{
 
     var id:String=""
     var command:String=""
-    var createTime:String=""
+    var createtime:String=""
 
     //类似java的构造方法
-    constructor(id:String,command:String,createTime:String){
+    constructor(id:String,command:String,createtime:String){
         this.id=id
         this.command=command
-        this.createTime=createTime
+        this.createtime=createtime
     }
 
     //类似java的构造方法
     constructor(){
         id=""
         command=""
-        createTime=""
+        createtime=""
     }
 }
