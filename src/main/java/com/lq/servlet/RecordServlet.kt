@@ -2,6 +2,8 @@ package com.lq.servlet
 
 import com.lq.bean.HistoryRecord
 import com.lq.service.AddService
+import com.lq.service.DeleteService
+import com.lq.service.QueryService
 import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -20,7 +22,8 @@ class RecordServlet : HttpServlet(){
 
     @Throws(ServletException::class, IOException::class)
     override fun doGet(req: HttpServletRequest, resp: HttpServletResponse) {
-        super.doPost(req, resp)
+
+
     }
 
     @Throws(ServletException::class, IOException::class)
@@ -31,15 +34,28 @@ class RecordServlet : HttpServlet(){
         resp.setHeader("Cache-Control", "no-cache")
         resp.setDateHeader("Expires", -10)
         val msg = req.getParameter("message")
-        logger.info(msg)
-        //获取当前时间
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val time = df.format(System.currentTimeMillis())
-        val historyRecord = HistoryRecord()
-        historyRecord.command = msg
-        historyRecord.createtime = time
         val addService = AddService()
-        addService.addRecord(historyRecord)
+        val queryService = QueryService()
+        //判断接收信息是否为空
+        if (msg !== "" && msg!!.length != 0 && msg != null) {
+            //查询是否存在相同的历史记录，如果没有，则添加进去
+            var flag=queryService.querySameHistroyRecord(msg)
+            if (flag){
+                logger.error("历史记录表已存在相同查询")
+            }else{
+
+                logger.info(msg)
+                //获取当前时间
+                val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                val time = df.format(System.currentTimeMillis())
+                val historyRecord = HistoryRecord()
+                historyRecord.command = msg
+                historyRecord.createtime = time
+                addService.addRecord(historyRecord)
+            }
+
+        }
+
 
     }
 }

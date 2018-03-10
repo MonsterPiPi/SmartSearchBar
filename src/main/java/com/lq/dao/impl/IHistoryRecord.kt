@@ -15,7 +15,18 @@ interface IHistoryRecord {
      */
     fun addRecord(historyRecord: HistoryRecord)
     /**
-     * 查询全部历史查询记录
+     * 根据条件查询历史查询记录
      */
-    fun queryHistoryRecordList():List<HistoryRecord>
+    fun queryHistoryRecordList(historyRecord: HistoryRecord):List<HistoryRecord>
+
+    /**
+     * 根据条件查询是否存在相同的历史记录
+     */
+    fun querySameHistroyRecord(historyRecord: HistoryRecord): Boolean
+
+    /**
+     * 删除所有历史查询记录
+     */
+    fun deleteAllRecord()
+
 }

@@ -5,6 +5,8 @@ import com.lq.service.AddService;
 import com.lq.service.QueryService;
 import com.lq.util.ResultUtil;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -13,13 +15,14 @@ import java.util.List;
  */
 public class TestMybatis {
 
+    private static Logger logger= LoggerFactory.getLogger(TestMybatis.class);
     @Test
     public void one(){
         String command="看";
         QueryService queryService=new QueryService();
         List<Message> messageList=queryService.queryMessageList(command);
         for (Message message:messageList){
-            System.out.println(message.getCommand());
+            logger.info(message.getCommand());
         }
     }
 
@@ -35,18 +38,18 @@ public class TestMybatis {
     @Test
     public void three(){
         QueryService queryService=new QueryService();
-        List<HistoryRecord> historyRecordList=queryService.queryHistoryRecordList();
+        List<HistoryRecord> historyRecordList=queryService.queryHistoryRecordList("查");
         for (HistoryRecord historyRecord:historyRecordList){
-            System.out.println(historyRecord.getCommand()+historyRecord.getCreatetime());
+           logger.info(historyRecord.getCommand()+historyRecord.getCreatetime());
         }
     }
 
     @Test
     public void four(){
-        Result result=new Result(null);
-        result.setCode(1);
-        result.setData("22");
-        System.out.println(ResultUtil.INSTANCE.success(result));
+
+        QueryService queryService=new QueryService();
+        boolean flag=queryService.querySameHistroyRecord("22423");
+        logger.info(flag+"");
 
     }
 

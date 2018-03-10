@@ -29,17 +29,34 @@ class SearchServlet:HttpServlet(){
         resp.setHeader("Pragma", "No-cache")
         resp.setHeader("Cache-Control", "no-cache")
         resp.setDateHeader("Expires", -10)
+        //接收前台传来的值
         val msg = req.getParameter("message")
+        //定义任意变量
+        var obj:Any=""
+        val queryService = QueryService()
+        //判断接收信息是否为空
         if (msg !== "" && msg!!.length != 0 && msg != null) {
             logger.info(msg)
-            val queryService = QueryService()
-            val messageList = queryService.queryMessageList(msg)
-            logger.info(messageList.size.toString() + "")
+            //不为空优先查询历史查询记录
+            val historyRecordList=queryService.queryHistoryRecordList(msg)
+            if (historyRecordList.size!==0&&historyRecordList!==null){
+                    obj=JSON.toJSON(ResultUtil.success(historyRecordList,1,"历史搜索记录"))
+            }else{
+                //为空查询数据库记录表
+                val messageList = queryService.queryMessageList(msg)
+                if (messageList.size!==0&&messageList!==null){
+                    obj=JSON.toJSON(ResultUtil.success(messageList,0,"本地搜索记录"))
+                }else{
+                    //没有查找到
+                    obj=JSON.toJSON(ResultUtil.success("",0,"本地搜索记录"))
+                    logger.error("没有查询到结果")
+                }
+            }
+            // 将结果以json方式传给前台
             var out: PrintWriter? = null
             try {
                 out = resp.writer
-                val `object` = JSON.toJSON(ResultUtil.success(messageList))
-                out!!.print(`object`)
+                out!!.print(obj)
                 out.flush()
             } catch (e: IOException) {
                 // TODO Auto-generated catch block
@@ -50,6 +67,9 @@ class SearchServlet:HttpServlet(){
 
 
         }
+
+    }
+    fun showJson(obj:Any){
 
     }
 }

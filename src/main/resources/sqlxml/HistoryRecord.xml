@@ -32,12 +32,26 @@
         INSERT INTO historyRecord (COMMAND,CREATETIME) VALUES (#{command},#{createtime})
     </insert>
 
-    <select id="queryHistoryRecordList"  resultMap="HistoryRecordResult">
-        SELECT * FROM historyRecord
+    <select id="queryHistoryRecordList"   parameterType="com.lq.bean.HistoryRecord" resultMap="HistoryRecordResult">
+        SELECT <include refid="columns"/> FROM historyRecord
+        <where>
+            <if test="command!=null &amp;&amp; !&quot;&quot;.equals(command.trim())">
+                and COMMAND like '%' #{command} '%'
+            </if>
+        </where>
+        order by ID
     </select>
 
+    <select id="querySameHistroyRecord"   parameterType="com.lq.bean.HistoryRecord" resultType="boolean">
+        SELECT  count(ID) FROM historyRecord WHERE COMMAND = #{command}
 
-    <sql id="columns">COMMAND,CREATETIME</sql>
+    </select>
+
+    <delete id="deleteAllRecord" parameterType="com.lq.bean.HistoryRecord">
+        DELETE FROM historyRecord
+    </delete>
+
+    <sql id="columns">COMMAND</sql>
 
 
 </mapper>

@@ -12,13 +12,20 @@ import com.lq.dao.MessageDao
  */
 class QueryService{
 
+    var historyRecordDao=HistoryRecordDao()
+    var messageDao=MessageDao()
+
     fun queryMessageList(command:String):List<Message>{
-        var messageDao=MessageDao()
+
         return messageDao.queryMessageList(command)
     }
 
-    fun queryHistoryRecordList():List<HistoryRecord>{
-        var historyRecordDao=HistoryRecordDao()
-        return historyRecordDao.queryHistoryRecordList()
+    fun queryHistoryRecordList(command: String):List<HistoryRecord>{
+
+        return historyRecordDao.queryHistoryRecordList(command)
+    }
+
+    fun querySameHistroyRecord(msg: String): Boolean {
+        return historyRecordDao.querySameHistroyRecord(msg)
     }
 }

@@ -8,14 +8,15 @@ import com.lq.bean.Result
  * kotlin中的静态方法类
  */
 object ResultUtil{
+
     /**
      * ResultUtil.INSTANCE.success(messageList)
      * Kotlin中为Any 等于 java中的Object
      */
-    fun success(data:Any): Any? {
+    fun success(data:Any,code:Int,msg:String): Any? {
         var result = Result(data)
-        result.msg = "成功"
-        result.code = 0
+        result.msg = msg
+        result.code = code
         return JSON.toJSON(result)
     }
 }

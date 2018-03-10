@@ -29,4 +29,13 @@
         <servlet-name>RecordServlet</servlet-name>
         <url-pattern>/v</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>com.lq.servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/d</url-pattern>
+    </servlet-mapping>
 </web-app>
