@@ -35,12 +35,16 @@ class SearchServlet:HttpServlet(){
         var obj:Any=""
         val queryService = QueryService()
         //判断接收信息是否为空
-        if (msg !== "" && msg!!.length != 0 && msg != null) {
-            logger.info(msg)
+        if (msg == null || msg.isEmpty()){
+            //没有查找到
+            obj=JSON.toJSON(ResultUtil.success("",2,"没有查询到结果"))
+            logger.error("1没有查询到结果")
+        }else{
+            //logger.info(msg)
             //不为空优先查询历史查询记录
             val historyRecordList=queryService.queryHistoryRecordList(msg)
             if (historyRecordList.size!==0&&historyRecordList!==null){
-                    obj=JSON.toJSON(ResultUtil.success(historyRecordList,1,"历史搜索记录"))
+                obj=JSON.toJSON(ResultUtil.success(historyRecordList,1,"历史搜索记录"))
             }else{
                 //为空查询数据库记录表
                 val messageList = queryService.queryMessageList(msg)
@@ -48,24 +52,23 @@ class SearchServlet:HttpServlet(){
                     obj=JSON.toJSON(ResultUtil.success(messageList,0,"本地搜索记录"))
                 }else{
                     //没有查找到
-                    obj=JSON.toJSON(ResultUtil.success("",0,"本地搜索记录"))
-                    logger.error("没有查询到结果")
+                    obj=JSON.toJSON(ResultUtil.success("",2,"没有查询到结果"))
+                    logger.error("2没有查询到结果")
                 }
             }
-            // 将结果以json方式传给前台
-            var out: PrintWriter? = null
-            try {
-                out = resp.writer
-                out!!.print(obj)
-                out.flush()
-            } catch (e: IOException) {
-                // TODO Auto-generated catch block
-                e.printStackTrace()
-            } finally {
-                out!!.close()
-            }
 
-
+        }
+        // 将结果以json方式传给前台
+        var out: PrintWriter? = null
+        try {
+            out = resp.writer
+            out!!.print(obj)
+            out.flush()
+        } catch (e: IOException) {
+            // TODO Auto-generated catch block
+            e.printStackTrace()
+        } finally {
+            out!!.close()
         }
 
     }

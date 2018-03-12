@@ -351,6 +351,7 @@
 
 function mySearchText() {
     var message= document.getElementById("message").value;
+    //console.log(message);
     //message= message.replace(/ /g,'');//过滤所有空格
     $.ajax({
         url:"/SmartSearchBar/s", //请求验证页面
@@ -362,23 +363,29 @@ function mySearchText() {
             var html = "";
             var data_2=data.data;
             if(data.code==0){
+                console.log("查询到结果");
                 for(var i=0;i<data_2.length;i++){
-                    console.log(data_2[i].command);
+                    //console.log(data_2[i].command);
                     var ls=data_2[i].command;
                     html+="<div class=\"link\"><a href=\"#\"  id='"+ls+"' onclick='addSmartSearchBar(this)'>"+ls+"</a></div>";
                 }
                 $("#listSearchResult").html(html);
             }else if(data.code==1){
+                console.log("查询到结果");
                 for(var i=0;i<data_2.length;i++){
-                    console.log(data_2[i].command);
+                    //console.log(data_2[i].command);
                     var ls=data_2[i].command;
                     html+="<div class=\"link\"><a href=\"#\"  id='"+ls+"' onclick='addSmartSearchBar(this)'>"+ls+"</a></div>";
                 }
                 html+="<div class=\"link\"><a href='#'   onclick='clearRecord()'>"+"清空历史查询记录"+" </a></div>";
                 $("#listSearchResult").html(html);
+            }else if(data.code==2){
+                console.log("没有查询到结果");
+                $("#listSearchResult").html(html);
             }
         },
         error:function(){
+            console.log("出现错误");
             return false;
         }
     });
