@@ -32,6 +32,7 @@
     <where>
     <if test="command!=null &amp;&amp; !&quot;&quot;.equals(command.trim())">
       and COMMAND like '%' #{command} '%'
+      OR COMMAND = #{command}
     </if>
     </where>
     order by ID
