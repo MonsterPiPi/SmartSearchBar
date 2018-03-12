@@ -72,7 +72,5 @@ class SearchServlet:HttpServlet(){
         }
 
     }
-    fun showJson(obj:Any){
 
-    }
 }

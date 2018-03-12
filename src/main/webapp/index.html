@@ -359,7 +359,7 @@ function mySearchText() {
         data:{message:message},//取得表文本框数据，作为提交数据 注意前面的 user 此处格式 key=value 其他方式请参考ajax手册
         dataType:"json",
         success: function(data)
-        { //请求成功时执行操作
+        {   //请求成功时执行操作
             var html = "";
             var data_2=data.data;
             if(data.code==0){
@@ -398,36 +398,41 @@ function addSmartSearchBar(obj) {
         type:"POST", //请求方式 可换为post 注意验证页面接收方式
         data:{message:obj.id},//取得表文本框数据，作为提交数据 注意前面的 user 此处格式 key=value 其他方式请参考ajax手册
         dataType:"json",
-        success: function(data)
-        { //请求成功时执行操作
-
-        },
-        error:function(){
-            return false;
-        }
-    });
-
-
-}
-function clearRecord() {
-    mdui.snackbar({
-        message: '历史查询记录已清除',
-        position: 'right-bottom'
-    });
-    $.ajax({
-        url:"/SmartSearchBar/d", //请求验证页面
-        type:"DELETE", //请求方式 可换为post 注意验证页面接收方式
-        data:{},//取得表文本框数据，作为提交数据 注意前面的 user 此处格式 key=value 其他方式请参考ajax手册
-        dataType:"json",
         success: function()
-        { //请求成功时执行操作
-
+        {
         },
         error:function(){
             return false;
         }
     });
     mySearchText();
+
+}
+function clearRecord() {
+
+    $.ajax({
+        url:"/SmartSearchBar/d", //请求验证页面
+        type:"DELETE", //请求方式 可换为post 注意验证页面接收方式
+        data:{},//取得表文本框数据，作为提交数据 注意前面的 user 此处格式 key=value 其他方式请参考ajax手册
+        dataType:"json",
+        success: function(data)
+        { //请求成功时执行操作
+            mdui.snackbar({
+                message: '历史查询记录已清除',
+                position: 'right-bottom'
+            });
+            //请求成功时执行操作
+            var html = "";
+            if(data.code==0){
+                console.log("删除成功");
+                $("#listSearchResult").html(html);
+                mySearchText();
+            }
+        },
+        error:function(){
+            return false;
+        }
+    });
 
 }
 </script>
