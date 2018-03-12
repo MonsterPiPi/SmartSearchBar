@@ -74,9 +74,22 @@
 
 
 #### 数据库设计
-
-
     SET FOREIGN_KEY_CHECKS=0;
+    
+    -- ----------------------------
+    -- Table structure for historyrecord
+    -- ----------------------------
+    DROP TABLE IF EXISTS `historyrecord`;
+    CREATE TABLE `historyrecord` (
+      `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+      `command` varchar(255) COLLATE utf8_bin NOT NULL,
+      `createtime` varchar(255) COLLATE utf8_bin NOT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+    
+    -- ----------------------------
+    -- Records of historyrecord
+    -- ----------------------------
     
     -- ----------------------------
     -- Table structure for message
@@ -85,21 +98,25 @@
     CREATE TABLE `message` (
       `ID` int(11) NOT NULL AUTO_INCREMENT,
       `COMMAND` varchar(255) DEFAULT NULL,
-      PRIMARY KEY (`ID`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+      PRIMARY KEY (`ID`),
+      KEY `indexCommand` (`COMMAND`) USING BTREE
+    ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
     
     -- ----------------------------
     -- Records of message
     -- ----------------------------
-    INSERT INTO `message` VALUES ('1', '查看');
-    INSERT INTO `message` VALUES ('12', '查找');
-    INSERT INTO `message` VALUES ('13', '看你');
-    INSERT INTO `message` VALUES ('14', '查看你');
+    INSERT INTO `message` VALUES ('18', '一后');
+    INSERT INTO `message` VALUES ('17', '一哈');
+    INSERT INTO `message` VALUES ('16', '查 找  哈');
     INSERT INTO `message` VALUES ('15', '查一个');
+    INSERT INTO `message` VALUES ('12', '查找');
+    INSERT INTO `message` VALUES ('1', '查看');
+    INSERT INTO `message` VALUES ('14', '查看你');
+    INSERT INTO `message` VALUES ('13', '看你');
     SET FOREIGN_KEY_CHECKS=1;
 
 
 #### 项目展示
-![](images/searchBox.gif)
+![](IMAGE/searchBox.gif)
 
 
